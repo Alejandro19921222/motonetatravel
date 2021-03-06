@@ -5,7 +5,10 @@ Rails.application.routes.draw do
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
   end
-  resources :posts
+  resources :posts do
+    resource :favorites, only: [:create, :destroy]
+
+  end
   root to: 'posts#index'
-  
+
 end
