@@ -7,6 +7,7 @@
       <div class="postbox">
         <p><%= @post.title %></p>
         <p><%= @post.body %></p>
+        <% if user_signed_in? %>
          <% if @post.favorited_by?(current_user) %>
           <%= link_to post_favorites_path(@post), method: :delete do %>♥<%= @post.favorites.count %> いいね
           <% end %>
@@ -14,12 +15,14 @@
           <%= link_to post_favorites_path(@post), method: :post do %>♡<%= @post.favorites.count %> いいね
           <% end %>
         <% end %>
+      <% else %>
+      <% end %>
         <% if @user == current_user %>
             <span><%= link_to '編集', edit_post_path(@post), class: "btn btn-sm btn-success edit_book_#{@post.id}" %></span>
             <span><%= link_to '削除', post_path(@post), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{@post.id}"%></span>
         <% else %>
         <% end %>
-        <%= render 'comment_form', user: @user, post_comment: @post_comment, post: @post %>
+          <%= render 'comment_form', user: @user, post_comment: @post_comment, post: @post %>
       </div>
     </div>
     <div class='col-md-3'>
