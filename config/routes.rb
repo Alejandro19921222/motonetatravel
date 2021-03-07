@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
   resources :posts do
     resource :favorites, only: [:create, :destroy]
-
+    resource :post_comments, only: [:create, :destroy]
   end
   root to: 'posts#index'
 
