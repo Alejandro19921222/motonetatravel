@@ -4,9 +4,21 @@
       <%= render 'users/info', user: current_user %>
     </div>
     <div class='col-md-6'>
+      <% if @tag != nil %>
+        <%= "タグが" + strong= "#{@tag.tag_name}" + "の投稿一覧" %>
+      <% end %>
       <%= render "index", posts: @posts  %>
     </div>
     <div class='col-md-3'>
-    </div>
+      <% @tag_list.each do |list| %>
+        <span>
+          <%= link_to list.tag_name, posts_path(tag_id: list.id)  %>
+          <%= "(#{list.posts.count})" %>
+        </span>
+      <% end %>
+        <span>
+          <%= link_to "すべて", posts_path()  %>
+        </span>
+
   </div>
 </div>

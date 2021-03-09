@@ -1,4 +1,4 @@
-<%= form_with model:post,local:true do |f| %>
+<%= form_with model:@post,local:true do |f| %>
   <div class="form-group">
     <%= f.label :title %>
     <%= f.text_field :title, class: 'form-control' %>
@@ -6,6 +6,14 @@
   <div class="form-group">
     <%= f.label :body %>
     <%= f.text_area :body, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :タグ %>
+    <%= f.text_area :tag_name, value: @post.tags.map(&:tag_name).join(' '), class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :公開ステータス %>
+    <%= f.select :draft, Post.drafts.keys.to_a, {} %>
   </div>
   <div class="form-group">
     <%= f.submit class: 'btn btn-success' %>
