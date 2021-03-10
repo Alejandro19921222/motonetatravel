@@ -27,8 +27,7 @@
           followers
         </a>
       </th>
-  </tr>
-
+    </tr>
     <tr>
       <% if current_user != user %>
       <% if current_user.following?(user) %>
@@ -38,9 +37,15 @@
       <% end %>
       <% end %>
     </tr>
+    <tr>
+      <% if current_user == user %>
+        <th><%= link_to '下書き', user_confirm_path(user.id), class: "btn btn-sm btn-success" %></th>
+      <% else %>
+      <% end %>
+    </tr>
   </table>
   <div class='row'>
-    <%= link_to '',edit_user_path(user),class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_#{user.id}" %>
+    <%= link_to '',edit_user_path(user),class: "btn btn-outline-secondary btn-block fas fa-user-cog" %>
   </div>
 <% else %>
 <% end %>

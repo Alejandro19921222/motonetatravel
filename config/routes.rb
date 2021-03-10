@@ -4,11 +4,12 @@ Rails.application.routes.draw do
     resource :relationships, only: [:create, :destroy]
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
+    get "confirm"
   end
   resources :posts do
     resource :favorites, only: [:create, :destroy]
     resource :post_comments, only: [:create, :destroy]
   end
-  root to: 'posts#index'
 
+  root to: 'posts#index'
 end

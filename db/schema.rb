@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_06_131920) do
+ActiveRecord::Schema.define(version: 2021_03_09_045559) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2021_03_06_131920) do
     t.string "title"
     t.text "body"
     t.string "post_image"
-    t.integer "draft"
+    t.integer "draft", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
@@ -40,6 +40,21 @@ ActiveRecord::Schema.define(version: 2021_03_06_131920) do
   create_table "relationships", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followed_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tag_maps", force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_tag_maps_on_post_id"
+    t.index ["tag_id"], name: "index_tag_maps_on_tag_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "tag_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -10,11 +10,17 @@ before_action :ensure_correct_user, only: [:edit,:update]
     @users = User.all
   end
 
+  def confirm
+    @user = User.find(params[:user_id])
+    @posts = @user.posts.draft.order("created_at DESC")
+  end
+
   def edit
     @user = User.find(params[:id])
   end
 
   def update
+    @user = User.find(params[:id])
     if @user.update(user_params)
       redirect_to user_path(@user), notice: "You have updated user successfully."
     else
