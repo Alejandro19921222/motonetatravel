@@ -10,11 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_09_045559) do
+ActiveRecord::Schema.define(version: 2021_03_11_135040) do
+
+  create_table "entries", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "room_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
     t.integer "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "room_id"
+    t.string "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -40,6 +55,11 @@ ActiveRecord::Schema.define(version: 2021_03_09_045559) do
   create_table "relationships", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followed_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "rooms", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -18,9 +18,13 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :post_comments, dependent: :destroy
 
+  has_many :user_rooms
+  has_many :chats
+  has_many :rooms, through: :user_rooms
+
   validates :name, length: {maximum: 20, minimum: 2}, uniqueness: true
-  validates :introduction, length: {maximum: 50}, uniqueness: true
-  
+  validates :introduction, length: {maximum: 50}
+
   def self.looks(searches, words)
     if searches == "perfect_match"
       @user = User.where("name LIKE ?", "#{words}")

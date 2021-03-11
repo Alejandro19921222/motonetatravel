@@ -43,6 +43,11 @@
       <% else %>
       <% end %>
     </tr>
+    <tr>
+      <% if current_user != user %>
+        <%= link_to 'チャットする', message_path(user.id) %>
+      <% end %>
+    </tr>
   </table>
   <div class='row'>
     <%= link_to '',edit_user_path(user),class: "btn btn-outline-secondary btn-block fas fa-user-cog" %>

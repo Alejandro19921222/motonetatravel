@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  get 'finders/finder'
+  get 'message/:id' => "messages#show", as: "message"
+  resources :messages, only: [:create]
+  
   devise_for :users
   resources :users,only: [:show,:index,:edit,:update] do
     resource :relationships, only: [:create, :destroy]
