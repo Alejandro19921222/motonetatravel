@@ -30,12 +30,12 @@
           <form class="navbar-form form-inline my-2 my-lg-0" action="#" role="search">
             <div class="form-group">
               <div class="input-group">
-                <input class="form-control" id="navbarInput-01" type="search" placeholder="Search">
-                <span class="input-group-btn">
-                  <button type="submit" class="btn">
-                    <span class="fui-search"></span>
-                  </button>
-                </span>
+                <%= form_with url: finder_path, method: :get, local: :true do |f| %>
+                <%= f.select :range, options_for_select([['User'], ['Post']]) %>
+                <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["部分一致","partial_match"]]) %>
+                <%= f.text_field :word %>
+                <%= f.submit "検索" %>
+                <% end %>
               </div>
             </div>
           </form>
