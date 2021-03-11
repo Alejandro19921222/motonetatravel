@@ -12,6 +12,15 @@ class Post < ApplicationRecord
   has_many :tag_maps, dependent: :destroy
   has_many :tags, through: :tag_maps
 
+  def self.looks(searches, words)
+    if searches == "perfect_match"
+      @post = Post.where("name LIKE ?", "#{words}")
+    else
+      @post = Post.where("name LIKE ?", "%#{words}%")
+    end
+  end
+
+
   def save_tag(sent_tags)
     current_tags = self.tags.pluck(:tag_name) unless self.tags.nil?
     old_tags = current_tags - sent_tags

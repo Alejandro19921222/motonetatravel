@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'finders/finder'
   devise_for :users
   resources :users,only: [:show,:index,:edit,:update] do
     resource :relationships, only: [:create, :destroy]
@@ -11,5 +12,6 @@ Rails.application.routes.draw do
     resource :post_comments, only: [:create, :destroy]
   end
 
+  get 'finder' => "finders#finder"
   root to: 'posts#index'
 end
