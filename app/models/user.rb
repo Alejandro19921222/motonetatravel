@@ -18,8 +18,8 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :post_comments, dependent: :destroy
 
-  has_many :user_rooms
-  has_many :chats
+  has_many :entries
+  has_many :messages
   has_many :rooms, through: :user_rooms
 
   validates :name, length: {maximum: 20, minimum: 2}, uniqueness: true

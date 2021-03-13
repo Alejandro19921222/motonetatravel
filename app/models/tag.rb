@@ -5,9 +5,9 @@ class Tag < ApplicationRecord
 
   def self.looks(searches, words)
     if searches == "perfect_match"
-      @tag = Tag.where("name LIKE ?", "#{words}")
+      @tag = Tag.where("tag_name LIKE ?", "#{words}")
     else
-      @tag = Tag.where("name LIKE ?", "%#{words}%")
+      @tag = Tag.where("tag_name LIKE ?", "%#{words}%")
     end
   end
 

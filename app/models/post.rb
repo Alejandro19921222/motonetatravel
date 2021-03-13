@@ -14,9 +14,9 @@ class Post < ApplicationRecord
 
   def self.looks(searches, words)
     if searches == "perfect_match"
-      @post = Post.where("name LIKE ?", "#{words}")
+      @post = Post.where("title LIKE ?", "#{words}")
     else
-      @post = Post.where("name LIKE ?", "%#{words}%")
+      @post = Post.where("title LIKE ?", "%#{words}%")
     end
   end
 

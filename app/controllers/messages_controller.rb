@@ -1,7 +1,7 @@
 class MessagesController < ApplicationController
   def show
     @user = User.find(params[:id])
-    rooms = current_user.user.pluck(:room_id)
+    rooms = current_user.entries.pluck(:room_id)
     user_rooms = Entry.find_by(user_id: @user.id, room_id: rooms)
     if user_rooms.nil?
       @room = Room.new
