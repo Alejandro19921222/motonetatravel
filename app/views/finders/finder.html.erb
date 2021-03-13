@@ -1,15 +1,18 @@
 <% if @range == "User" %>
   <% @users.each do |user| %>
-    <%= user.name %>   　//例(ユーザーの名前を表示)
+    <%= user.name %>
   <% end %>
 <% elsif @range == "Post" %>
   <% @posts.each do |post| %>
-    <%= post.title %>  　//例(投稿のタイトルを表示)
-    <%= post.text %>   　//例(投稿の本文を表示)
+    <%= post.title %>
+    <%= post.body %>
   <% end %>
 <% else %>
   <% @tags.each do |tag| %>
-    <%= post.title %>  　
-    <%= post.text %>   
+    <% tag.posts.each do |post| %>
+      <%= post.title %>
+      <%= post.body %>
+      <%= tag.tag_name %>
+    <% end %>
   <% end %>
 <% end %>
