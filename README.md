@@ -1,24 +1,27 @@
-# README
+# 元ネタトラベル
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+ユーザーが書籍や音楽等その作品の元となった場所を旅行し体験したことをSNS形式でシェアできる投稿型サイトです。
 
-Things you may want to cover:
+※これ以降「書籍や音楽等その作品の元となった場所」に関して「元ネタ」と称します。
 
-* Ruby version
+### サイトテーマ
+元ネタを通して旅行した場所の体験記を共有するためのサイトです。元ネタを軸にした体験記になる為、ガイドマップに載っていない観光地を知ることができたり、有名な観光地の中のマイナーなスポットを知ることができます。サイト内でユーザー同士交流することも可能なため、交友関係を増やしたり、更なる情報交換も行うことが可能です。
 
-* System dependencies
+### テーマを選んだ理由
+ 旅行代理店に勤めていた時に日本に旅行に来る外国人がガイドマップに載っている王道ルート（京都等）を旅行するだけでなく、自分の趣味を軸にルートを決めてマイナーな場所を旅行している外国人がいたことが凄く印象に残っており、
+ガイドマップには載らない日本の場所（観光地を問わず）を紹介するサイトを作ってみたいなと考えておりました。
+ また、私は読書や音楽鑑賞が趣味でその本や曲の元ネタとなった場所に行き雰囲気を味わうという旅行を何度か行なったことがあり良い思い出となっております。
+ 上記二つの経験から元ネタを通じて旅行した場所を紹介しつつその体験を共有できるようなサイトを作ろうと思いテーマにしました。
 
-* Configuration
+### ターゲットユーザー
+- 旅行計画を立てているユーザー
+- 日本語が読める外国人ユーザー
 
-* Database creation
+### 主な利用シーン
+- 新しい旅行先を探しているユーザーのキッカケ作りになるサイト（投稿記事を閲覧することで）
+- ユーザー同士で情報交換を行うことができます（フォロー機能やメッセージ機能によって）
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 機能一覧・設計図
+### 機能一覧
+https://docs.google.com/spreadsheets/d/19479IrTuw5xhxAVpG1-7IF3itj6cohrIhGKcMhbX8aw/edit#gid=0
