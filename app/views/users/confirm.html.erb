@@ -1,0 +1,8 @@
+<% @posts.each do |post| %>
+  <div class="postbox">
+    <p><%= post.title %></p>
+    <p><%= post.body %></p>
+    <span><%= link_to '編集', edit_post_path(post), class: "btn btn-sm btn-success edit_book_#{post.id}" %></span>
+    <span><%= link_to '削除', post_path(post), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{post.id}"%></span>
+  </div>
+<% end %>

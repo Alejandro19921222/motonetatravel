@@ -1,0 +1,18 @@
+<% if @range == "User" %>
+  <% @users.each do |user| %>
+    <%= user.name %>
+  <% end %>
+<% elsif @range == "Post" %>
+  <% @posts.each do |post| %>
+    <%= post.title %>
+    <%= post.body %>
+  <% end %>
+<% else %>
+  <% @tags.each do |tag| %>
+    <% tag.posts.each do |post| %>
+      <%= post.title %>
+      <%= post.body %>
+      <%= tag.tag_name %>
+    <% end %>
+  <% end %>
+<% end %>
