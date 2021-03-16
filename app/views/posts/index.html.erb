@@ -2,31 +2,17 @@
 <%= render 'layouts/menubar' %>
 <div class='container px-5 px-sm-0'>
   <div class='row'>
-    <div class='col-md-3'>
-      <%= render 'users/info', user: current_user %>
+    <div class='col-md-2 border-right'>
+      <%= render 'users/leftbar', user: current_user %>
     </div>
-    <div class='col-md-6'>
+    <div class='col-md-8'>
       <% if @tag != nil %>
         <%= "タグが" + strong= "#{@tag.tag_name}" + "の投稿一覧" %>
       <% end %>
-      <%= render "index", posts: @posts  %>
+      <%= render "index", posts: @posts, users: @users %>
     </div>
-    <div class='col-md-3'>
-      <%= form_with url: finder_path, method: :get, local: :true do |f| %>
-        <%= f.select :range, options_for_select([['User'], ['Post'], ['Tag']]) %>
-        <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["部分一致","partial_match"]]) %>
-        <%= f.text_field :word %>
-        <%= f.submit "検索" %>
-      <% end %>
-      <% @tag_list.each do |list| %>
-        <span>
-          <%= link_to list.tag_name, posts_path(tag_id: list.id)  %>
-          <%= "(#{list.posts.count})" %>
-        </span>
-      <% end %>
-        <span>
-          <%= link_to "すべて", posts_path()  %>
-        </span>
-
+    <div class='col-md-2 border-left'>
+      <%= render 'rightbar', tag_list: @tag_list %>
+    </div>
   </div>
 </div>

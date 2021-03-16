@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_11_135040) do
+ActiveRecord::Schema.define(version: 2021_03_16_094211) do
 
   create_table "entries", force: :cascade do |t|
     t.integer "user_id"
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2021_03_11_135040) do
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "body"
-    t.string "post_image"
+    t.string "post_image_id"
     t.integer "draft", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
