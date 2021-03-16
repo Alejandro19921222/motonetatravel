@@ -6,7 +6,13 @@
          <span><%= post.user.name %></span>
        </div>
         <div class="image-box">
-          <p><%= attachment_image_tag(post, :post_image,:fill,200,200, fallback: "no_image.jpg") %></p>
+          <% if post.post_images.present? %>
+            <% post.post_images.each do |post_image| %>
+              <p><%= attachment_image_tag(post_image.post_images, :post_images,:fill,200,200, fallback: "no_image.jpg") %></p>
+            <% end %>
+          <% else %>
+            画像はありません。
+          <% end %>
         </div>
         <div class="title-box">
           <p><%= post.title %></p>
@@ -29,6 +35,6 @@
     <% else %>
     <% end %>
     <p><%= link_to "#{post.post_comments.count} コメント", post_path(post.id) %></p>
-  </div>
-<% end %>
-<% end %>
+  <% end %>
+  <% end %>
+</div>
