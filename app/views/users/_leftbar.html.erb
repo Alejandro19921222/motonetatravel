@@ -1,6 +1,7 @@
 <% if user_signed_in? %>
+  <div class=""
   <table class='table'>
-    <tr><%= attachment_image_tag(user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg") %></tr>
+    <tr><%# attachment_image_tag(user, :profile_image,:fill,20,20, fallback: "no_image.jpg") %></tr>
     <tr>
 	    <th>name</th>
 	    <th><%= user.name %></th>
