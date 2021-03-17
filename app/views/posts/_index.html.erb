@@ -2,13 +2,13 @@
     <% posts.each do |post| %>
     <% post.tags.each do |tag| %>
        <div class="user-box">
-         <span><%# attachment_image_tag(post.user, :profile_image,:fill,20,20, fallback: "no_image.jpg", size: "20×20") %></span>
+         <span><%= attachment_image_tag(post.user, :profile_image,:fill,20,20, fallback: "no_image.jpg", size: "20x20") %></span>
          <span><%= post.user.name %></span>
        </div>
         <div class="image-box">
           <% if post.post_images.present? %>
-            <% post.post_images.each do |post_image| %>
-              <p><%= attachment_image_tag(post_image.post_images, :post_images,:fill,200,200, fallback: "no_image.jpg") %></p>
+            <% post.post_images.first(1).each do |post_image| %>
+              <p><%= attachment_image_tag(post_image, :image,:fill,200,200, fallback: "no_image.jpg") %></p>
             <% end %>
           <% else %>
             画像はありません。
