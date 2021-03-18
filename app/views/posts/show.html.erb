@@ -34,29 +34,15 @@
   			      <span><%= link_to tag.tag_name,posts_path(tag_id: tag.id) %></span>
   			    <% end %>
   			    <span>|</span>
-        	  <% if user_signed_in? %>
-              <% if @post.favorited_by?(current_user) %>
-                <span>
-                  <%= link_to post_favorites_path(@post), method: :delete do %>
-                    ♥<%= @post.favorites.count %>いいね
-                  <% end %>
-                </span>
-              <% else %>
-                <span>
-                  <%= link_to post_favorites_path(@post), method: :post do %>
-                    ♡<%= @post.favorites.count %> いいね
-                  <% end %>
-                </span>
-              <% end %>
-            <% end %>
+        	  <span id="favorite-<%= @post.id %>"><%= render 'favorites/favorites_form', post: @post %></span>
             <span>|</span>
-            <span><%= @post.post_comments.count %></span>
+            <span class="comment_count"><%= @post.post_comments.count %></span>
             <span>|</span>
             <span><%= @post.created_at.strftime('%Y/%m/%d') %></span>
           </p>
         </div>
       </div>
 		</div>
-	<%= render 'comment_index', post: @post, user: @user %>
-	<%= render 'comment_form', post: @post, post_comment: @post_comment %>
+	<div class="post_comment"><%= render 'post_comments/comment_index', post: @post, user: @user %></div>
+	<%= render 'post_comments/comment_form', post: @post, post_comment: @post_comment %>
 </div>
