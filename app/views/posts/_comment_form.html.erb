@@ -1,6 +1,12 @@
-<div class="new-comment">
+<div class="row">
+  <div class="col-md-12">
   <%= form_with(model:[post, post_comment], local: true) do |f| %>
-    <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
-    <%= f.submit "送信する" %>
+    <div class="widget-area no-padding blank">
+      <div class="status-upload">
+        <p><%= f.text_area :comment, placeholder: "コメントをここに", class: "form" %></p>
+        <p class="button"><%= f.submit "送信する", class: "btn btn-success green" %></p>
+      </div>
+    </div>
   <% end %>
+  </div>
 </div>

@@ -1,7 +1,7 @@
 <%= render 'layouts/menubar' %>
 <div class="container">
-		<div class="card">
-			<div class="container-fliud">
+		<div class="card-box">
+				<div class="container-fliud">
 				<div class="wrapper row">
 					<div class="preview col-md-6">
 					  <div class="preview-pic tab-content">
@@ -49,25 +49,14 @@
                 </span>
               <% end %>
             <% end %>
-
-          	  | <i class="icon-calendar"></i> Sept 16th, 2012 at 4:20 pm
-           	  | <i class="icon-comment"></i>
-       	      | <i class="icon-share"></i> <a href="#">39 Shares</a>
+            <span>|</span>
+            <span><%= @post.post_comments.count %></span>
+            <span>|</span>
+            <span><%= @post.created_at.strftime('%Y/%m/%d') %></span>
           </p>
         </div>
       </div>
 		</div>
-		<div class="comments">
-      <p>コメント件数：<%= @post.post_comments.count %></p>
-      <% @post.post_comments.each do |post_comment| %>
-        <p><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %></p>
-        <%= post_comment.user.name %>
-        <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
-      <% if post_comment.user == current_user %>
-        <div class="comment-delete">
-          <p><%= link_to "削除", post_post_comments_path(@post.id, post_comment.id), method: :delete %></p>
-        </div>
-      <% end %>
-      <% end %>
-	  </div>
+	<%= render 'comment_index', post: @post, user: @user %>
+	<%= render 'comment_form', post: @post, post_comment: @post_comment %>
 </div>
