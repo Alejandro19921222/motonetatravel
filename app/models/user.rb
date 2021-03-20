@@ -23,7 +23,7 @@ class User < ApplicationRecord
   has_many :rooms, through: :user_rooms
 
   validates :name, length: {maximum: 20, minimum: 2}, uniqueness: true
-  validates :introduction, length: {maximum: 50}
+  validates :introduction, length: {maximum: 100}
 
   def self.looks(searches, words)
     if searches == "perfect_match"

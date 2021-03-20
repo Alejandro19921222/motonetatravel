@@ -1,31 +1,48 @@
-<div class='container px-5 px-sm-0'>
-  <div class='row'>
-    <div class='col-md-3'>
-      <%= render 'users/info', user: current_user %>
-    </div>
-    <div class='col-md-6'>
-      <div class="postbox">
-        <p><%= @post.title %></p>
-        <p><%= @post.body %></p>
-        <% if user_signed_in? %>
-         <% if @post.favorited_by?(current_user) %>
-          <%= link_to post_favorites_path(@post), method: :delete do %>♥<%= @post.favorites.count %> いいね
-          <% end %>
-        <% else %>
-          <%= link_to post_favorites_path(@post), method: :post do %>♡<%= @post.favorites.count %> いいね
-          <% end %>
-        <% end %>
-      <% else %>
-      <% end %>
-        <% if @user == current_user %>
-            <span><%= link_to '編集', edit_post_path(@post), class: "btn btn-sm btn-success edit_book_#{@post.id}" %></span>
-            <span><%= link_to '削除', post_path(@post), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{@post.id}"%></span>
-        <% else %>
-        <% end %>
-          <%= render 'comment_form', user: @user, post_comment: @post_comment, post: @post %>
+<%= render 'layouts/menubar' %>
+<div class="container">
+		<div class="card-box">
+				<div class="container-fliud">
+				<div class="wrapper row">
+					<div class="preview col-md-6">
+					  <div class="preview-pic tab-content">
+						  <div class="tab-pane active" id="pic-1"><img src="http://placekitten.com/400/252" /></div>
+						  <div class="tab-pane" id="pic-2"><img src="http://placekitten.com/400/252" /></div>
+						  <div class="tab-pane" id="pic-3"><img src="http://placekitten.com/400/252" /></div>
+						  <div class="tab-pane" id="pic-4"><img src="http://placekitten.com/400/252" /></div>
+						  <div class="tab-pane" id="pic-5"><img src="http://placekitten.com/400/252" /></div>
+						</div>
+						<ul class="preview-thumbnail nav nav-tabs">
+						  <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
+						  <li><a data-target="#pic-2" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
+						  <li><a data-target="#pic-3" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
+						  <li><a data-target="#pic-4" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
+						  <li><a data-target="#pic-5" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
+						</ul>
+
+					</div>
+					<div class="details col-md-6">
+						<h3 class="product-title"><%= @post.title %></h3>
+						<p class="product-description"><%= @post.body %></p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+			  <div class="footer" style="margin-top: 5px;">
+  			  <p>
+  			    <span>Tags:</span>
+  			    <% @post_tags.each do |tag| %>
+  			      <span><%= link_to tag.tag_name,posts_path(tag_id: tag.id) %></span>
+  			    <% end %>
+  			    <span>|</span>
+        	  <span id="favorite-<%= @post.id %>"><%= render 'favorites/favorites_form', post: @post %></span>
+            <span>|</span>
+            <span class="comment_count"><%= @post.post_comments.count %></span>
+            <span>|</span>
+            <span><%= @post.created_at.strftime('%Y/%m/%d') %></span>
+          </p>
+        </div>
       </div>
-    </div>
-    <div class='col-md-3'>
-    </div>
-  </div>
+		</div>
+	<div class="post_comment"><%= render 'post_comments/comment_index', post: @post, user: @user %></div>
+	<%= render 'post_comments/comment_form', post: @post, post_comment: @post_comment %>
 </div>

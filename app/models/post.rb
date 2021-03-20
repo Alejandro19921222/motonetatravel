@@ -1,6 +1,5 @@
 class Post < ApplicationRecord
   belongs_to :user
-  attachment :post_image
 
   validates :title, presence: true
 	validates :body, presence: true
@@ -8,9 +7,13 @@ class Post < ApplicationRecord
 	has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :post_comments, dependent: :destroy
+  has_many :post_images, dependent: :destroy
+  accepts_attachments_for :post_images, attachment: :image
 
   has_many :tag_maps, dependent: :destroy
   has_many :tags, through: :tag_maps
+  has_one :spot, dependent: :destroy
+  accepts_nested_attributes_for :spot
 
   def self.looks(searches, words)
     if searches == "perfect_match"

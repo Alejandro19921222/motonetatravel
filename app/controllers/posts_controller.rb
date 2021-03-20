@@ -15,10 +15,15 @@ class PostsController < ApplicationController
     @post_comment = PostComment.new
     @posts = Post.published.order("created_at DESC")
     @post_tags = @post.tags
+    @lat = @review.spot.latitude
+    @lng = @review.spot.longitude
+    gon.lat = @lat
+    gon.lng = @lng
   end
 
   def new
     @post = Post.new
+    @post.build_spot
   end
 
   def edit
@@ -56,7 +61,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title,:body,:post_image,:draft)
+    params.require(:post).permit(:title,:body,:draft,:latitude,:longitude,post_images_images: [], spot_attributes: [:address])
   end
 
   def save_tag

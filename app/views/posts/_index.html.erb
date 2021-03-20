@@ -1,34 +1,63 @@
-  <div class="postbox">
-    <% posts.each do |post| %>
-    <% post.tags.each do |tag| %>
-       <div class="user-box">
-         <span><%# attachment_image_tag(post.user, :profile_image,:fill,20,20, fallback: "no_image.jpg", size: "20×20") %></span>
-         <span><%= post.user.name %></span>
-       </div>
-        <div class="image-box">
-          <p><%= attachment_image_tag(post, :post_image,:fill,200,200, fallback: "no_image.jpg") %></p>
-        </div>
-        <div class="title-box">
-          <p><%= post.title %></p>
-        </div>
-        <div class="tag-box">
-          <span><%= link_to tag.tag_name,posts_path(tag_id: tag.id) %></span>
-        </div>
-    <% if user_signed_in? %>
-      <% if post.favorited_by?(current_user) %>
-        <td>
-          <%= link_to post_favorites_path(post), method: :delete do %>♥<%= post.favorites.count %> いいね
+<% posts.each do |post| %>
+  <% post.tags.each do |tag| %>
+    <div class="card-box">
+      <div class="cardbox-heading">
+        <div class="media m-0">
+		      <div class="d-flex mr-3">
+				    <%= attachment_image_tag(post.user, :profile_image,:fill,50,50, fallback: "no_image.jpg", size: "50x50") %>
+			    </div>
+		      <div class="media-body">
+			      <p style="line-height: 50px;"><%= post.user.name %></p>
+			    </div>
+		    </div><!--/ media -->
+		    <div class="cardbox-item">
+		      <% if post.post_images.present? %>
+            <% post.post_images.first(1).each do |post_image| %>
+              <p><%= attachment_image_tag(post_image, :image,:fill,300,300, fallback: "no_image.jpg", size: "300x300", class: "cardbox-item") %></p>
+            <% end %>
+          <% else %>
+            画像はありません。
           <% end %>
-        </td>
-      <% else %>
-        <td>
-          <%= link_to post_favorites_path(post), method: :post do %>♡<%= post.favorites.count %> いいね
-          <% end %>
-        </td>
-      <% end %>
-    <% else %>
-    <% end %>
-    <p><%= link_to "#{post.post_comments.count} コメント", post_path(post.id) %></p>
-  </div>
+		    </div>
+		    <div class="cardbox-base" style="margin-top: 20px;">
+		      <h3><%= post.title %></h3>
+		    </div>
+		    <div class="row float-right">
+			    <div class="footer" style="margin-top: 5px;">
+  			    <p>
+  			      <span>Tags:</span>
+			        <span><%= link_to tag.tag_name,posts_path(tag_id: tag.id) %></span>
+    			    <span>|</span>
+          	  <span id="favorite-<%= post.id %>"><%= render 'favorites/favorites_form', post: post %></span>
+              <span>|</span>
+              <span class="comment_count"><%= post.post_comments.count %></span>
+              <span>|</span>
+              <span><%= post.created_at.strftime('%Y/%m/%d') %></span>
+            </p>
+          </div>
+        </div>
+	    </div><!--/ cardbox-heading -->
+    </div>
+  <% end %>
 <% end %>
-<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

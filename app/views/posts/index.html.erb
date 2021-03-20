@@ -2,16 +2,16 @@
 <%= render 'layouts/menubar' %>
 <div class='container px-5 px-sm-0'>
   <div class='row'>
-    <div class='col-md-2 border-right'>
+    <div class='col-md-3 border'>
       <%= render 'users/leftbar', user: current_user %>
     </div>
-    <div class='col-md-8'>
+    <div class='col-md-6'>
       <% if @tag != nil %>
         <%= "タグが" + strong= "#{@tag.tag_name}" + "の投稿一覧" %>
       <% end %>
-      <%= render "index", posts: @posts, users: @users %>
+      <%= render "index", posts: @posts %>
     </div>
-    <div class='col-md-2 border-left'>
+    <div class='col-md-3 border'>
       <%= render 'rightbar', tag_list: @tag_list %>
     </div>
   </div>
