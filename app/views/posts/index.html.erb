@@ -1,24 +1,18 @@
+<%= render 'layouts/about' %>
+<%= render 'layouts/menubar' %>
 <div class='container px-5 px-sm-0'>
   <div class='row'>
-    <div class='col-md-3'>
-      <%= render 'users/info', user: current_user %>
+    <div class='col-md-2 border-right'>
+      <%= render 'users/leftbar', user: current_user %>
     </div>
-    <div class='col-md-6'>
+    <div class='col-md-8'>
       <% if @tag != nil %>
         <%= "タグが" + strong= "#{@tag.tag_name}" + "の投稿一覧" %>
       <% end %>
-      <%= render "index", posts: @posts  %>
+      <%= render "index", posts: @posts, users: @users %>
     </div>
-    <div class='col-md-3'>
-      <% @tag_list.each do |list| %>
-        <span>
-          <%= link_to list.tag_name, posts_path(tag_id: list.id)  %>
-          <%= "(#{list.posts.count})" %>
-        </span>
-      <% end %>
-        <span>
-          <%= link_to "すべて", posts_path()  %>
-        </span>
-
+    <div class='col-md-2 border-left'>
+      <%= render 'rightbar', tag_list: @tag_list %>
+    </div>
   </div>
 </div>

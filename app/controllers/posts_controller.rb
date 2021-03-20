@@ -56,7 +56,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title,:body,:post_image, :draft)
+    params.require(:post).permit(:title,:body,:post_image,:draft)
   end
 
   def save_tag
