@@ -3,6 +3,13 @@
     <%= f.label :title %>
     <%= f.text_field :title, class: 'form-control' %>
   </div>
+  <div class="form-group">
+    <%= f.fields_for :spot do |s| %>
+      <%= s.label :address, "レビュー場所(Google Mapで検索)", class: 'spot__title' %>
+      <%= s.text_field :address, placeholder: "スポットを入力", id: "address", class: 'spot__text' %>
+      <div id="map" style="height: 320px; width: 640px;"></div>
+    <% end %>
+  </div>
    <div class="form-group">
     <%= f.label :image %>
     <%= f.attachment_field :post_images_images, multiple: true, class: "form-control-file post_image" %>
