@@ -3,7 +3,7 @@ before_action :ensure_correct_user, only: [:edit,:update]
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts
+    @posts = @user.posts.page(params[:page]).per(4)
   end
 
   def index

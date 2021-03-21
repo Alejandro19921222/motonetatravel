@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
+
   def index
-    @posts = Post.published.order("created_at DESC")
+    @posts = Post.published.order("created_at DESC").page(params[:page]).per(4)
     if params[:tag_id] != nil
       @tag = Tag.find(params[:tag_id])
       @posts = @tag.posts.all
@@ -15,8 +16,8 @@ class PostsController < ApplicationController
     @post_comment = PostComment.new
     @posts = Post.published.order("created_at DESC")
     @post_tags = @post.tags
-    @lat = @review.spot.latitude
-    @lng = @review.spot.longitude
+    @lat = @post.spot.latitude
+    @lng = @post.spot.longitude
     gon.lat = @lat
     gon.lng = @lng
   end

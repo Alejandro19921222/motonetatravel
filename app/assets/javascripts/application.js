@@ -26,6 +26,18 @@ $(function() {
   });
 });
 
+$(function() {
+  $('.slider-show').slick({
+    dots: true,
+    infinite: true,
+    arrows: true,
+    prevArrow: '<button type="button" class="slick-prev yazirushi">Previous</button>',
+  });
+});
+
+
+
+
 let map //変数の定義
 let geocoder //変数の定義
 
@@ -49,7 +61,8 @@ function initMap(){ //コールバック関数
   }
 }
 
-function codeAddress(){ //コールバック関数
+function codeAddress(e){ //コールバック関数
+  e.preventDefault();
   let inputAddress = document.getElementById('address').value; //'address'というidの値（value）を取得
 
   geocoder.geocode( { 'address': inputAddress}, function(results, status) { //ジオコードしたい住所を引数として渡す
@@ -69,4 +82,5 @@ function codeAddress(){ //コールバック関数
       alert('該当する結果がありませんでした');
     }
   });
+  return false;
 }

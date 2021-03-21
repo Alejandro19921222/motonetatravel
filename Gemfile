@@ -72,6 +72,7 @@ gem "gmaps4rails"
 gem "geocoder"
 gem "gon"
 gem 'dotenv-rails'
+gem 'kaminari', '~> 0.17.0'
 group :production do
   gem 'mysql2'
 end
