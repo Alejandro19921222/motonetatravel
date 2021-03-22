@@ -7,7 +7,11 @@
 				    <%= attachment_image_tag(post.user, :profile_image,:fill,50,50, fallback: "no_image.jpg", size: "50x50") %>
 			    </div>
 		      <div class="media-body">
-			      <p style="line-height: 50px;"><%= post.user.name %></p>
+			      <p style="line-height: 50px;">
+			        <%= link_to user_path(post.user) do %>
+			          <%= post.user.name %>
+		          <% end %>
+			      </p>
 			    </div>
 		    </div><!--/ media -->
 		    <div class="cardbox-item">
@@ -20,7 +24,12 @@
           <% end %>
 		    </div>
 		    <div class="cardbox-base" style="margin-top: 20px;">
-		      <h3><%= post.title %></h3>
+		      <h3>
+		        <%= link_to post_path(post) do %>
+		          <%= post.title %>
+		        <% end %>
+		      </h3>
+		      <p style="margin-top: 10px:"><%= post.spot.address %></p>
 		    </div>
 		    <div class="row float-right">
 			    <div class="footer" style="margin-top: 5px;">

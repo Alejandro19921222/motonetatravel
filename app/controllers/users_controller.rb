@@ -12,7 +12,7 @@ before_action :ensure_correct_user, only: [:edit,:update]
 
   def confirm
     @user = User.find(params[:user_id])
-    @posts = @user.posts.draft.order("created_at DESC")
+    @posts = @user.posts.draft.order("created_at DESC").page(params[:page]).per(4)
   end
 
   def edit

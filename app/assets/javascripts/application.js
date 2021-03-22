@@ -35,9 +35,6 @@ $(function() {
   });
 });
 
-
-
-
 let map //変数の定義
 let geocoder //変数の定義
 

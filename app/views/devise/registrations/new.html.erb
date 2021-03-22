@@ -8,20 +8,20 @@
       <div class="col-3"></div>
       <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
-        <div class="form-group col-xs-6">
-          <label class="control-label col-xs-2">名前</label>
+        <div class="form-group">
+          <%= f.label :名前 %>
           <%= f.text_field :name, autofocus: true, class: "form-control", placeholder: "2文字以上で設定してください", size: "50" %>
         </div>
         <div class="form-group">
-          <label class="control-label col-xs-2">メールアドレス</label>
+          <%= f.label :メールアドレス %>
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "example@example.com" %>
         </div>
         <div class="form-group">
-          <label class="control-label col-xs-2">パスワード</label>
+          <%= f.label :パスワード %>
           <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "６文字以上で設定してください" %>
         </div>
         <div class="form-group">
-          <label class="control-label col-xs-2">パスワード(確認用）</label>
+          <%= f.label :パスワード（確認用） %>
           <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "上記と同じパスワードを入力してください" %>
         </div>
         <div class="form-group">

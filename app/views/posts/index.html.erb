@@ -2,7 +2,7 @@
 <%= render 'layouts/menubar' %>
 <div class='container px-5 px-sm-0'>
   <div class='row'>
-    <div class='col-md-3 border'>
+    <div class='col-md-3 border-right'>
       <%= render 'users/leftbar', user: current_user %>
     </div>
     <div class='col-md-6'>
@@ -11,11 +11,11 @@
       <% end %>
       <%= render "index", posts: @posts %>
     </div>
-    <div class='col-md-3 border'>
+    <div class='col-md-3 border-left'>
       <%= render 'rightbar', tag_list: @tag_list %>
     </div>
   </div>
   <div class="row d-flex align-items-center justify-content-center">
-    <div style= "margin: 10px;"><%= paginate @posts %></div>
+    <div class="pagination" style= "margin: 10px;"><%= paginate @posts %></div>
   </div>
 </div>
