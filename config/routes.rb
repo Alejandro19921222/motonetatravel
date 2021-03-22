@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'message/:id' => "messages#show", as: "message"
-  resources :messages, only: [:create]
+  resources :messages, only: [:create, :destroy]
 
   devise_for :users
   resources :users,only: [:show,:index,:edit,:update] do

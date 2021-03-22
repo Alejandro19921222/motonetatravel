@@ -1,2 +1,7 @@
-$('.message').append("<p style='text-align: left;'><%= @message.message %></p>");
+let message = "<div class='message'>";
+message = message + "<h3 class='chat-log__author' style='text-align: right;'><%= current_user.name %></h3>";
+message = message + "<div class='chat-log__message' style='text-align: right;'><%= @message.message %></div>";
+message = message + "</div>";
+$('.chat-log').append(message);
+
 $('input[type=text]').val("")

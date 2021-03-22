@@ -1,8 +1,24 @@
+<%= render 'layouts/menubar' %>
 <% @posts.each do |post| %>
-  <div class="postbox">
-    <p><%= post.title %></p>
-    <p><%= post.body %></p>
-    <span><%= link_to '編集', edit_post_path(post), class: "btn btn-sm btn-success edit_book_#{post.id}" %></span>
-    <span><%= link_to '削除', post_path(post), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{post.id}"%></span>
-  </div>
+  <% post.tags.each do |tag| %>
+    <div class="card-box">
+      <div class="cardbox-heading">
+		    <div class="cardbox-base" style="margin-top: 20px;">
+		      <h3>
+		        <%= link_to edit_post_path(post) do %>
+		          <%= post.title %>
+		        <% end %>
+		      </h3>
+		    </div>
+		    <div class="row float-right">
+			    <div class="footer" style="margin-top: 5px;">
+  			    <p>
+  			      <span>Tags:</span>
+			        <span><%= link_to tag.tag_name,posts_path(tag_id: tag.id) %></span>
+            </p>
+          </div>
+        </div>
+	    </div><!--/ cardbox-heading -->
+    </div>
+  <% end %>
 <% end %>
