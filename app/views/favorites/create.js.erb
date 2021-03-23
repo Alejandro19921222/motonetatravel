@@ -1,1 +1,2 @@
 $('#favorite-<%= @post.id %>').html("<%= j(render 'favorites/favorites_form', post: @post) %>");
+$('.favorite-count').html("<%= j(render 'favorites/favorites_count', post: @post) %>");

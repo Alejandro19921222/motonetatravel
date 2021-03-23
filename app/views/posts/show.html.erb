@@ -14,6 +14,7 @@
 					<div class="details col-md-6">
 						<h1 style="margin: 20px 0 5px 0;"><%= @post.title %></h1>
 						<p style="margin-bottom: 10px;"><%= @post.spot.address %></p>
+						<p class="favorite-count" style="margin-bottom: 20px:"><%= render 'favorites/favorites_count', post: @post %></p>
 						<p><%= @post.body %></p>
 					</div>
 				</div>
@@ -28,7 +29,7 @@
   			    <span>|</span>
         	  <span id="favorite-<%= @post.id %>"><%= render 'favorites/favorites_form', post: @post %></span>
             <span>|</span>
-            <span class="comment_count"><%= @post.post_comments.count %></span>
+            <span class="comment_count"><%= render 'post_comments/comment_count', post: @post %></span>
             <span>|</span>
             <span><%= @post.created_at.strftime('%Y/%m/%d') %></span>
             <% if current_user == @user %>
@@ -42,5 +43,16 @@
       </div>
 		</div>
 	<div class="post_comment"><%= render 'post_comments/comment_index', post: @post, user: @user %></div>
-	<%= render 'post_comments/comment_form', post: @post, post_comment: @post_comment %>
+	<div class="row">
+  	<div class="col-md-12">
+ 			 <%= form_with(model:[@post, @post_comment]) do |f| %>
+    		<div class="widget-area no-padding blank">
+      		<div class="status-upload">
+        		<p><%= f.text_area :comment, placeholder: "コメントをここに", class: "form" %></p>
+        		<p class="button"><%= f.submit "送信する", class: "btn btn-success green" %></p>
+      		</div>
+    		</div>
+  		<% end %>
+  	</div>
+	</div>
 </div>

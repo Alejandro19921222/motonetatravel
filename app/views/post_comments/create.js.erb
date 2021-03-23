@@ -1,2 +1,2 @@
 $(".post_comment").html("<%= j(render 'post_comments/comment_index', post: @post, user: @user) %>");
-$(".comment_count").html("<%= @post.post_comments.count %>")
+$(".comment_count").html("<%= j(render 'post_comments/comment_count', post: @post ) %>")

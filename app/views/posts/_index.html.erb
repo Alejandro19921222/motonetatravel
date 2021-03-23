@@ -1,5 +1,4 @@
 <% posts.each do |post| %>
-  <% post.tags.each do |tag| %>
     <div class="card-box">
       <div class="cardbox-heading">
         <div class="media m-0">
@@ -30,16 +29,25 @@
 		        <% end %>
 		      </h3>
 		      <p style="margin-top: 10px:"><%= post.spot.address %></p>
+		      <p class="favorite-count" style="margin-top: 10px:"><%= render 'favorites/favorites_count', post: post %></p>
 		    </div>
 		    <div class="row float-right">
 			    <div class="footer" style="margin-top: 5px;">
   			    <p>
-  			      <span>Tags:</span>
-			        <span><%= link_to tag.tag_name,posts_path(tag_id: tag.id) %></span>
+  			      <span class="fas fa-tag">Tags:</span>
+  						<% post.tags.each do |tag| %>
+			        	<span><%= link_to tag.tag_name,posts_path(tag_id: tag.id) %></span>
+  						<% end %>
     			    <span>|</span>
           	  <span id="favorite-<%= post.id %>"><%= render 'favorites/favorites_form', post: post %></span>
               <span>|</span>
-              <span class="comment_count"><%= post.post_comments.count %></span>
+              <span class="comment_count">
+              	<i class="fas fa-comment">
+              		<%= link_to post_path(post) do %>
+              			<%= post.post_comments.count %>
+              		<% end %>
+              	</i>
+              </span>
               <span>|</span>
               <span><%= post.created_at.strftime('%Y/%m/%d') %></span>
             </p>
@@ -47,7 +55,6 @@
         </div>
 	    </div><!--/ cardbox-heading -->
     </div>
-  <% end %>
 <% end %>
 
 

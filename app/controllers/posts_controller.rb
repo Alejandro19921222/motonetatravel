@@ -3,8 +3,9 @@ class PostsController < ApplicationController
   def index
     @posts = Post.published.order("created_at DESC").page(params[:page]).per(4)
     if params[:tag_id] != nil
+      @posts = Post.published.order("created_at DESC").page(params[:page]).per(4)
       @tag = Tag.find(params[:tag_id])
-      @posts = @tag.posts.all
+      @tag_posts = @tag.posts.all.page(params[:page]).per(4)
     end
     # draft の post に紐づく tag は表示しない
     @tag_list = @posts.flat_map { |post| post.tags }.compact.uniq
@@ -12,9 +13,11 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+      if @post.draft == "draft"
+        redirect_to root_path notice: "こちらの記事は非公開になります"
+      end
     @user = @post.user
     @post_comment = PostComment.new
-    @posts = Post.published.order("created_at DESC")
     @post_tags = @post.tags
     @lat = @post.spot.latitude
     @lng = @post.spot.longitude
