@@ -17,6 +17,16 @@ RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
+  config.before(:each) do |example|
+    if example.metadata[:type] == :system
+      if example.metadata[:js]
+        driven_by :selenium, using: :headless_chrome, screen_size: [1400, 1400]
+      else
+        driven_by :rack_test
+      end
+    end
+  end
+  # Capybara.javascript_driver = :selenium
   config.expect_with :rspec do |expectations|
     # This option will default to `true` in RSpec 4. It makes the `description`
     # and `failure_message` of custom matchers include text for helper methods

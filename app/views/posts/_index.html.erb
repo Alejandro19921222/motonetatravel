@@ -42,11 +42,11 @@
           	  <span id="favorite-<%= post.id %>"><%= render 'favorites/favorites_form', post: post %></span>
               <span>|</span>
               <span class="comment_count">
-              	<i class="fas fa-comment">
-              		<%= link_to post_path(post) do %>
+              	<%= link_to post_path(post) do %>
+              		<i class="fas fa-comment">
               			<%= post.post_comments.count %>
+              		</i>
               		<% end %>
-              	</i>
               </span>
               <span>|</span>
               <span><%= post.created_at.strftime('%Y/%m/%d') %></span>
