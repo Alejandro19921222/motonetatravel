@@ -8,8 +8,10 @@
     <div class='col-md-6'>
       <% if @tag != nil %>
         <%= "タグが" + strong= "#{@tag.tag_name}" + "の投稿一覧" %>
+        <%= render "index", posts: @tag_posts %>
+      <% else %>
+        <%= render "index", posts: @posts %>
       <% end %>
-      <%= render "index", posts: @posts %>
     </div>
     <div class='col-md-3 border-left'>
       <%= render 'rightbar', tag_list: @tag_list %>

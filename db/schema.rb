@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 2021_03_20_140433) do
     t.string "address", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.float "longitude", null: false
+    t.float "longitude"
     t.float "latitude", null: false
   end
 
