@@ -9,6 +9,7 @@ class PostsController < ApplicationController
     end
     # draft の post に紐づく tag は表示しない
     @tag_list = @posts.flat_map { |post| post.tags }.compact.uniq
+    
   end
 
   def show

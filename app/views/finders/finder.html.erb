@@ -1,7 +1,6 @@
 <% if @range == "User" %>
-  <% @users.each do |user| %>
-    <%= user.name %>
-  <% end %>
+  <h2 style="margin: 20px 0;"><%= "#{ @word }" + "の検索結果" %></h2>
+  <%= render "relationships/index", users: @users %>
 <% elsif @range == "Post" %>
   <% @posts.each do |post| %>
     <%= post.title %>

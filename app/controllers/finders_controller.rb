@@ -8,5 +8,6 @@ class FindersController < ApplicationController
     else
       @tags = Tag.looks(params[:search], params[:word])
     end
+    @word = params[:word]
   end
 end
