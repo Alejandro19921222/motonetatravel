@@ -15,7 +15,7 @@
           <div class="message">
             <h3 class="chat-log__author" style="text-align: right;"><%= current_user.name %></h3>
             <div class="chat-log__message" style="text-align: right;"><%= chat.message %></div>
-             <div class="chat-delete"><%= render 'delete', message: chat %></div>
+             <div class="chat-log__delete"><%= link_to "削除", message_path(chat.id), method: :delete, remote: true %></div>
           </div>
         <% end %>
       <% end %>
