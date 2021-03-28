@@ -1,21 +1,23 @@
 <%= render 'layouts/menubar' %>
-<div class='col-md-3 border-right'>
-  <%= render 'leftbar', user: current_user %>
-</div>
-<div class='col-md-6'>
-  <% if @range == "User" %>
-    <h2 style="margin: 20px 0;"><%= "#{ @word }" + "の検索結果" %></h2>
-    <%= render "relationships/index", users: @users %>
-  <% elsif @range == "Post" %>
-    <h2 style="margin: 20px 0;"><%= "#{ @word }" + "の検索結果" %></h2>
-    <%= render "posts/index", posts: @posts %>
-  <% else %>
-    <h2 style="margin: 20px 0;"><%= "#{ @word }" + "の検索結果" %></h2>
-    <% @tags.each do |tag| %>
-      <%= render "posts/index", posts: tag.posts %>
+<div class="row">
+  <div class='col-md-3 border-right'>
+    <%= render 'users/leftbar', user: current_user %>
+  </div>
+  <div class='col-md-6'>
+    <% if @range == "User" %>
+      <h2 style="margin: 20px 0;"><%= "#{ @word }" + "の検索結果" %></h2>
+      <%= render "relationships/index", users: @users %>
+    <% elsif @range == "Post" %>
+      <h2 style="margin: 20px 0;"><%= "#{ @word }" + "の検索結果" %></h2>
+      <%= render "posts/index", posts: @posts %>
+    <% else %>
+      <h2 style="margin: 20px 0;"><%= "#{ @word }" + "の検索結果" %></h2>
+      <% @tags.each do |tag| %>
+        <%= render "posts/index", posts: tag.posts %>
+      <% end %>
     <% end %>
-  <% end %>
-</div>
-<div class='col-md-3 border-left'>
-  <%= render 'finders/searchbar' %>
+  </div>
+  <div class='col-md-3 border-left'>
+    <%= render 'finders/searchbar' %>
+  </div>
 </div>

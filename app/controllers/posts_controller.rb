@@ -5,11 +5,10 @@ class PostsController < ApplicationController
     if params[:tag_id] != nil
       @posts = Post.published.order("created_at DESC").page(params[:page]).per(4)
       @tag = Tag.find(params[:tag_id])
-      @tag_posts = @tag.posts.all.page(params[:page]).per(4)
+      @tag_posts = @tag.posts.all
     end
     # draft の post に紐づく tag は表示しない
     @tag_list = @posts.flat_map { |post| post.tags }.compact.uniq
-    
   end
 
   def show
