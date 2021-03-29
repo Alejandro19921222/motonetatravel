@@ -47,7 +47,6 @@
         </div>
       </div>
       <% @posts.each do |post| %>
-        <% post.tags.each do |tag| %>
           <div class="card-box">
             <div class="cardbox-heading">
               <div class="media m-0">
@@ -68,14 +67,20 @@
                 <% end %>
       		    </div>
       		    <div class="cardbox-base" style="margin-top: 20px;">
+      		      <%= link_to post_path(post) do %>
       		      <h3><%= post.title %></h3>
+      		      <% end %>
       		      <p style="margin-top: 10px:"><%= post.spot.address %></p>
       		    </div>
       		    <div class="row float-right">
       			    <div class="footer" style="margin-top: 5px;">
         			    <p>
         			      <span>Tags:</span>
-      			        <span><%= link_to tag.tag_name,posts_path(tag_id: tag.id) %></span>
+      			        <span>
+                      <% post.tags.each do |tag| %>
+      			            <%= link_to tag.tag_name,posts_path(tag_id: tag.id) %>
+      			          <% end %>
+      			        </span>
           			    <span>|</span>
                 	  <span id="favorite-<%= post.id %>"><%= render 'favorites/favorites_form', post: post %></span>
                     <span>|</span>
@@ -93,7 +98,6 @@
               </div>
       	    </div><!--/ cardbox-heading -->
           </div>
-        <% end %>
       <% end %>
     </div>
     <div class='col-md-3 border-left'>
