@@ -76,6 +76,7 @@ gem "geocoder"
 gem "gon"
 gem 'dotenv-rails'
 gem 'kaminari', '~> 0.17.0'
+gem 'enum_help'
 group :production do
   gem 'mysql2'
 end
