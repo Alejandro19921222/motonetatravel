@@ -1,1 +1,1 @@
-$(".chat-delete").html("<%= j(render 'delete', message: @message) %>");
+$("#message-<%=@message.id %>").remove();

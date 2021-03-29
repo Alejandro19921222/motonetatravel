@@ -49,14 +49,6 @@
       <% @posts.each do |post| %>
           <div class="card-box">
             <div class="cardbox-heading">
-              <div class="media m-0">
-      		      <div class="d-flex mr-3">
-      				    <%= attachment_image_tag(post.user, :profile_image,:fill,50,50, fallback: "no_image.jpg", size: "50x50") %>
-      			    </div>
-      		      <div class="media-body">
-      			      <p style="line-height: 50px;"><%= post.user.name %></p>
-      			    </div>
-      		    </div><!--/ media -->
       		    <div class="cardbox-item">
       		      <% if post.post_images.present? %>
                   <% post.post_images.first(1).each do |post_image| %>

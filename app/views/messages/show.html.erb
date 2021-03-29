@@ -12,7 +12,7 @@
             <div class="chat-log__message" style="text-align: left;"><%= chat.message %></div>
           </div>
         <% else %>
-          <div class="message">
+          <div class="message" id="message-<%= chat.id %>">
             <h3 class="chat-log__author" style="text-align: right;"><%= current_user.name %></h3>
             <div class="chat-log__message" style="text-align: right;"><%= chat.message %></div>
              <div class="chat-log__delete"><%= link_to "削除", message_path(chat.id), method: :delete, remote: true %></div>
@@ -26,7 +26,7 @@
       <div class="row">
         <%= form_with model: @message do |f| %>
           <div class="col-sm-12 col-xs-12">
-            <%= f.text_field :message, class: "form-control", size: 200 %>
+            <%= f.text_field :message, class: "form-control js-message-input", size: 200 %>
             <%= f.hidden_field :room_id %>
           </div>
         <% end %>
