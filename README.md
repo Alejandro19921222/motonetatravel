@@ -22,6 +22,6 @@
 - 新しい旅行先を探しているユーザーのキッカケ作りになるサイト（投稿記事を閲覧することで）
 - ユーザー同士で情報交換を行うことができます（フォロー機能やメッセージ機能によって）
 
-## 機能一覧・設計図
+## 設計書
 ### 機能一覧
 https://docs.google.com/spreadsheets/d/19479IrTuw5xhxAVpG1-7IF3itj6cohrIhGKcMhbX8aw/edit#gid=0
