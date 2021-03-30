@@ -23,7 +23,7 @@
             </span>
             <span style="margin-left: 5px; line-height: 10px;">
               <% if current_user != @user %>
-                <%= link_to 'チャットする', message_path(@user.id), class: "btn btn-primary" %>
+                <%= link_to 'チャットする', message_path(@user.id) %>
               <% end %>
             </span>
           </div>
