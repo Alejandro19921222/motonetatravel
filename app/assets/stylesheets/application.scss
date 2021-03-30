@@ -17,9 +17,30 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
+
  body{
    font-family: "Avenir Next Regular" ;
  }
+ .title-box {
+background-color: #fff;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+-ms-border-radius: 4px;
+-o-border-radius: 4px;
+border-radius: 4px;
+-webkit-box-shadow: 0 0 16px rgba(0, 0, 0, 0.05);
+-moz-box-shadow: 0 0 16px rgba(0, 0, 0, 0.05);
+-ms-box-shadow: 0 0 16px rgba(0, 0, 0, 0.05);
+-o-box-shadow: 0 0 16px rgba(0, 0, 0, 0.05);
+box-shadow: 0 0 16px rgba(0, 0, 0, 0.05);
+float: left;
+position: relative;
+width: 100%;
+}
+.main-color{
+  background-color: #f6f9fb;
+}
+
 .title-logo{
  display: block;
 	width: 350px;
@@ -61,11 +82,8 @@
 .nav-btn:hover::after {
   transform: scale(1, 1);
 }
-.about{
- background-color: #FFFAFA;
-}
 .menu{
- background-color: #FFFAFA;
+ background-color: #f6f9fb;
 }
 
 img {
@@ -130,6 +148,7 @@ padding: 25px 30px;
 position: relative;
 width: 100%;
 }
+
 .cardbox-item{
   position: relative;
   display: block;
@@ -395,4 +414,8 @@ border: 1px solid #F2F2F2;
   padding: 20px;
   background: #fff;
   min-height: 460px;
+}
+
+footer{
+  background-color: #f6f9fb;
 }
